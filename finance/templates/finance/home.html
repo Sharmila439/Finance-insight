@@ -1,0 +1,86 @@
+<!-- homepage/templates/homepage/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Website</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'finance/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Financial Insights</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href=" "><i class="fas fa-home"></i> Home</a></li> <!-- Home Icon -->
+                <li><a href="emi-calculator/"><i class="fas fa-calculator"></i> EMI Calculator</a></li> <!-- EMI Calculator Icon -->
+                <li><a href="sip-calculator"><i class="fas fa-hand-holding-usd"></i> SIP Calculator</a></li> <!-- SIP Calculator Icon -->
+                <li><a href="fin-edu/"><i class="fas fa-graduation-cap"></i> Financial Education</a></li> <!-- Financial Education Icon -->
+                <li><a href="ai-insights/"><i class="fas fa-robot"></i> AI Insights</a></li> <!-- AI Insights Icon -->
+                <li><a href="user-profile/" class="user-profile"><i class="fas fa-user-circle"></i> Profile</a></li> <!-- User Profile Icon -->
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Your Financial Future Starts Here</h2>
+            <p>Discover personalized tools and strategies to secure your financial future.</p>
+            <a href="/contact/" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section class="main">
+        <div class="card-container">
+            <div class="card">
+                <h3>Investment Planning</h3>
+                <p>Smart investment strategies to grow your wealth.</p>
+                <a href="#" class="card-btn">Learn More</a>
+            </div>
+            <div class="card">
+                <h3>Tax Planning</h3>
+                <p>Maximize your returns with effective tax-saving strategies.</p>
+                <a href="#" class="card-btn">Learn More</a>
+            </div>
+            <div class="card">
+                <h3>Retirement Planning</h3>
+                <p>Secure your future with a solid retirement plan.</p>
+                <a href="#" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- New sections added -->
+        <div class="feature-container">
+            <div class="feature-box">
+                <h3>User Profile</h3>
+                <p>Track your financial progress, set goals, and manage your personal financial details.</p>
+                <a href="user-profile/" class="feature-btn">Access Profile</a>
+            </div>
+            <div class="feature-box">
+                <h3>Financial Educational Learning</h3>
+                <p>"Financial education teaches the skills to understand money and finance."</p>
+                <a href="fin-edu/" class="feature-btn">Start Learning</a>
+            </div>
+            <div class="feature-box">
+                <h3>AI-Powered Insights</h3>
+                <p>Get personalized financial insights and recommendations using AI technology.</p>
+                <a href="ai-insights/" class="feature-btn">Explore Insights</a>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3>Let's Get Started</h3>
+            <p>Transform your financial future today. Schedule a consultation with us!</p>
+            <a href="/contact/" class="cta-btn">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Financial Insights. All rights reserved.</p>
+    </footer>
+</body>
+</html>

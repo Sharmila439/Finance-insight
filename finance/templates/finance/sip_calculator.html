@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIP Calculator</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'finance/sip_cal.css' %}">
+</head>
+<body>
+    <!-- Decorative circle -->
+    <div class="form-decor"></div>
+
+    <!-- Main Form Container -->
+    <form method="POST">
+        {% csrf_token %}
+        
+        <h1>SIP Calculator</h1>
+
+        <label for="principal_amount">Principal Amount: </label>
+        <input type="text" name="principal_amount" required><br>
+
+        <label for="rate_of_interest">Rate of Interest (%): </label>
+        <input type="text" name="rate_of_interest" required><br>
+
+        <label for="time_period">Time Period (in years): </label>
+        <input type="text" name="time_period" required><br>
+
+        <label for="monthly_sip">Monthly SIP Amount: </label>
+        <input type="text" name="monthly_sip" required><br>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    <!-- Footer Section (Short Description about SIP) -->
+   <!-- Footer Section (Short Description about SIP) -->
+<footer>
+    <p><strong>SIP (Systematic Investment Plan)</strong> is a disciplined way of investing regularly in mutual funds, which can help build wealth over time. Start small and let your money grow!</p>
+</footer>
+
+</body>
+</html>

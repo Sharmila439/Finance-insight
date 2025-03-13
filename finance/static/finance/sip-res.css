@@ -1,0 +1,81 @@
+/* General Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2ecc71 0%, #3498db 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff; /* White text color */
+    text-align: center;
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/026/285/515/small/digital-financial-data-illustration-background-line-graphic-line-finance-stock-trading-investment-dark-blue-background-vector.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: gradientShift 6s ease infinite;
+}
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 36px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Link Styling */
+a {
+    font-size: 18px;
+    color: #fff;
+    background-color: #3498db;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+/* Hover Effect for the Link */
+a:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Adding a Ripple Effect to the Button */
+a:active {
+    transform: scale(0.98);
+}
+
+/* Container for the Result */
+.result-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+/* Optional: Add a subtle animation when the result page loads */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+

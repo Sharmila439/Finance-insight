@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'finance/profile.css' %}">
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Header Section -->
+        <header class="profile-header">
+            <h1>Welcome, {{ user.username }}!</h1>
+        </header>
+
+        <!-- Main Profile Section -->
+        <main class="profile-main">
+            <section class="profile-info">
+                <!-- Profile Picture -->
+                <div class="profile-picture">
+                    <img src="{{ profile.get_profile_picture }}" alt="Profile Picture">
+                </div>
+
+                <!-- Profile Details -->
+                <div class="profile-details">
+                    <h2>Your Profile Information</h2>
+                    <ul>
+                        <li><strong>Income:</strong> ${{ profile.income }}</li>
+                        <li><strong>Savings Goal:</strong> ${{ profile.savings_goals }}</li>
+                        <li><strong>Expenses:</strong> ${{ profile.expenses }}</li>
+
+                        {% if profile.date_of_birth %}
+                            <li><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</li>
+                        {% endif %}
+
+                        {% if profile.address %}
+                            <li><strong>Address:</strong> {{ profile.address }}</li>
+                        {% endif %}
+
+                        {% if profile.social_links %}
+                            <li><strong>Social Links:</strong>
+                                <ul>
+                                    {% for platform, link in profile.social_links.items %}
+                                        <li><a href="{{ link }}" target="_blank">{{ platform }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                        <li><small>Last Updated: {{ profile.last_updated }}</small></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section to Update Profile -->
+            <section class="update-link">
+                <a href="{% url 'register' %}">Click here to edit your profile</a>
+            </section>
+
+            <!-- Logout Section -->
+            <section class="logout-link">
+                <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="profile-footer">
+        <p>&copy; 2025 Your Company</p>
+    </footer>
+</body>
+</html>

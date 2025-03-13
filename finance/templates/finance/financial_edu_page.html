@@ -1,0 +1,60 @@
+{% load embed_video_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Education - Video Lessons</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'finance/financial-edu.css' %}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Financial Education Video Lessons</h1>
+        <p>Search and Explore the World of Finance through Video Lessons</p>
+    </div>
+
+    <!-- Search Form -->
+    <div class="search-container">
+        <h2>Search Lessons</h2>
+        <form method="get">
+            <div>
+                <input type="text" name="keyword" placeholder="Search by keyword..." value="{{ request.GET.keyword }}">
+            </div>
+            <div>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+        
+        <!-- Display Error Message if the form is submitted with no keyword -->
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    </div>
+
+    <!-- Video Gallery -->
+    <div class="video-gallery">
+        {% if lessons %}
+            {% for lesson in lessons %}
+                <div class="video-item">
+                    <h3>{{ lesson.title }}</h3>
+                    <p><strong>Published on:</strong> {{ lesson.published_date|date:"F j, Y" }}</p>
+                    {% video lesson.video 'small' %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="video-item">
+                <p>No lessons found with your search criteria.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Financial Education Platform</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'finance/emi-cal.css' %}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left side: Form -->
+        <div class="form-container">
+            <h1>EMI Calculator</h1>
+            <form method="POST">
+                {% csrf_token %}
+                
+                <!-- Loan Amount -->
+                <div class="form-field">
+                    <label for="loan_amount">Loan Amount:</label>
+                    <input type="number" id="loan_amount" name="loan_amount" required>
+                </div>
+                
+                <!-- Interest Rate -->
+                <div class="form-field">
+                    <label for="interest_rate">Interest Rate (Annual):</label>
+                    <input type="number" id="interest_rate" name="interest_rate" required>
+                </div>
+                
+                <!-- Tenure -->
+                <div class="form-field">
+                    <label for="tenure">Tenure (Years):</label>
+                    <input type="number" id="tenure" name="tenure" required>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit">Calculate EMI</button>
+            </form>
+        </div>
+        
+        <!-- Right side: EMI Result -->
+        <div class="emi-result-container">
+            {% if emi %}
+            <div class="emi-result">
+                <h2>Your EMI Calculation Result</h2>
+                <div class="result-amount">
+                    <span>Your EMI is:</span> {{ emi }}
+                </div>
+                <div class="result-info">
+                    <p>This is the monthly EMI you need to pay based on your loan amount, interest rate, and tenure.</p>
+                </div>
+                <div class="result-footer">
+                    <p>Note: This EMI value is approximate and may vary depending on the exact terms of your loan.</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="emi-result">
+                <h2>Fill out the form to calculate your EMI</h2>
+                <p>Once you provide the loan amount, interest rate, and tenure, your EMI will appear here.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

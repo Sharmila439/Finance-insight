@@ -1,0 +1,347 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body */
+body {
+    color: #fff;
+    background: url('https://www.shutterstock.com/image-illustration/blue-money-business-graph-finance-600nw-2166540277.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px; /* Reduced padding for compactness */
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+header .logo h1{
+    font-size: 1.6rem; /* Smaller font size for a more condensed look */
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0; /* Removed margin for compact look */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto; /* Push nav items to the right */
+    padding: 0; /* Removed padding */
+}
+
+nav ul li {
+    margin: 0 5px; /* Reduced space between list items */
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 0.9rem; /* Smaller font size for more compact appearance */
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Slightly reduced letter spacing */
+    position: relative;
+    padding: 5px 8px; /* Reduced padding for tighter fit */
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+nav ul li a i {
+    font-size: 1.1rem; /* Slightly smaller icon size */
+    margin-right: 6px; /* Reduced space between icon and text */
+}
+
+/* Add underline effect on hover */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #e67e22; /* Orange color */
+    bottom: -3px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+nav ul li a:hover {
+    color: #e67e22; /* Change to orange on hover */
+    transform: translateY(-2px); /* Slight vertical movement on hover */
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* User Profile Icon */
+nav ul li a.user-profile {
+    font-size: 0.9rem; /* Keep same size for user profile */
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a.user-profile i {
+    font-size: 1.3rem; /* Slightly larger icon size */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a.user-profile:hover i {
+    transform: translateY(-3px);
+    color: #e67e22; /* Orange on hover */
+}
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6); /* Darker overlay */
+    animation: fadeIn 2s ease-out;
+    margin-top: 80px; /* Offset for fixed header */
+}
+
+.hero .hero-content {
+    max-width: 800px;
+}
+
+.hero h2 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero .btn {
+    background-color: #16a085; /* Green */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    border-radius: 25px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    background-color: #1abc9c; /* Lighter Green */
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Main Content */
+.main {
+    padding: 100px 20px 20px;
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.card {
+    background: linear-gradient(145deg, #3498db, #2980b9); /* Blue Gradient */
+    color: white;
+    flex: 1;
+    margin: 0 15px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.card .card-btn {
+    background-color: #e67e22; /* Orange */
+    color: white;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.card .card-btn:hover {
+    background-color: #d35400; /* Darker Orange */
+    transform: translateY(-3px);
+}
+
+/* Feature Box Section */
+.feature-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.feature-box {
+    background: linear-gradient(145deg,#3498db,  #2980b9); /* Green Gradient */
+    color: white;
+    flex: 1;
+    margin: 0 15px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.feature-box h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.feature-box p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.feature-box .feature-btn {
+    background-color: #e67e22; /* Orange */
+    color: white;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.feature-box .feature-btn:hover {
+    background-color: #d35400; /* Darker Orange */
+    transform: translateY(-3px);
+}
+
+/* Call to Action (CTA) Section */
+.cta-section {
+    background-color: #1abc9c; /* Green */
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 80px;
+}
+
+.cta-section h3 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.cta-section p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+.cta-section .cta-btn {
+    background-color: #e67e22; /* Orange */
+    color: white;
+    padding: 15px 35px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.cta-section .cta-btn:hover {
+    background-color: #d35400; /* Darker Orange */
+    transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.hero .hero-content h2 {
+    animation: bounce 1.5s ease-in-out infinite;
+}

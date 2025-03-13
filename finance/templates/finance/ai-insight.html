@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Financial Goal - AI Insights</title>
+
+    <!-- External Libraries for UI Components -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.css">
+    <style>
+        body {
+          font-family: 'Roboto', sans-serif;
+          background-image: url('data:image/jpeg;base64,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');
+          background-size: cover; /* Ensures the image covers the entire page */
+          background-position: center; /* Centers the image */
+          background-repeat: no-repeat; /* Prevents repeating the image */
+          color: #333;
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+        }
+
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #3498db;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .form-section,
+        .insights-section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+
+/* Form Section */
+.form-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Card */
+.form-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease;
+}
+
+/* Title */
+.form-card h2 {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-wrap: wrap;  /* Allow wrapping for responsive layout */
+    justify-content: space-between;
+    gap: 20px;  /* Space between inputs */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Form Group - Label */
+.form-group label {
+    width: 100%;  /* Make label take full width in smaller screens */
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* Inputs */
+.form-group input,
+.form-group select {
+    width: 60%;  /* Make input fields take 30% of the row width */
+    padding: 5px;  /* Increased padding for larger input */
+    font-size:15px;  /* Larger text size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+/* Focus Effect */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border: 1px solid #3498db;
+    outline: none;
+    transform: scale(1.02);
+}
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: #2ecc71;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Submit Button Hover Effect */
+.btn-submit:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+        .insights-cards-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .insight-card {
+            background-color: #fff;
+            padding: 15px;
+            width: 30%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .insight-card:hover {
+            transform: scale(1.05);
+            background-color: #f39c12;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .insight-card i {
+            font-size: 2em;
+            color: #f39c12;
+            animation: flipIn 1s ease-out;
+        }
+
+        .insight-card p {
+            font-size: 1em;
+            color: #34495e;
+            margin-top: 10px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-top: 30px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #7f8c8d;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            color: #3498db;
+        }
+
+        .close-btn {
+            color: #3498db;
+            font-size: 1.5em;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        /* Goal Progress Bar */
+        .progress-bar-container {
+            margin-top: 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 20px;
+            height: 25px;
+            margin-top: 10px;
+        }
+
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            border-radius: 20px;
+            background-color: #3498db;
+        }
+
+        /* Tooltip Style */
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Set Your Financial Goals</h1>
+            <p>Leverage AI insights to make smarter financial decisions and reach your goals faster.</p>
+        </header>
+
+              <!-- Financial Goal Form Section -->
+              <section class="form-section">
+                <form id="financial-goal-form" method="POST">
+                    {% csrf_token %}
+                    <div class="form-card animate__animated animate__fadeInUp">
+                        <h2>Enter Your Financial Goal</h2>
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                        <button type="submit" class="btn-submit animate__animated animate__fadeIn">Submit</button>
+                    </div>
+                </form>
+            </section>
+
+        <!-- AI Insights Section -->
+        {% if suggestions %}
+        <section class="insights-section">
+            <h3 class="animate__animated animate__fadeIn" style="color: #fff;font-size: larger">Your AI Insights & Suggestions :</h3>
+            <div class="insights-cards-container">
+                {% for suggestion in suggestions %}
+                <div class="insight-card animate__animated animate__zoomIn">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>{{ suggestion }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Goal Progress Chart -->
+            <div class="chart-container">
+                <canvas id="goalChart"></canvas>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar-container">
+                <p>Goal Progress</p>
+                <div class="progress-bar">
+                    <span id="progress-bar" style="width: 50%;"></span>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Women Finance. All Rights Reserved</p>
+    </footer>
+
+    <!-- Modal for Additional Insights -->
+    <div id="insightModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>AI Financial Insights</h2>
+            <p>Your financial goal is in progress. Based on your inputs, here are some next steps you can consider...</p>
+            <ul>
+                <li>Set a recurring savings schedule</li>
+                <li>Review your expenses monthly</li>
+                <li>Invest in a diversified portfolio</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.onload = function () {
+            const ctx = document.getElementById('goalChart').getContext('2d');
+            let goalChart;
+
+            // Function to update the chart
+            function updateGoalChart(completed, remaining) {
+                if (goalChart) goalChart.destroy();  // Clear existing chart
+
+                goalChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Completed', 'Remaining'],
+                        datasets: [{
+                            data: [completed, remaining],
+                            backgroundColor: ['#3498db', '#2ecc71'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Update progress bar
+                const progressBar = document.getElementById('progress-bar');
+                progressBar.style.width = `${completed}%`;
+            }
+
+            // Initial Chart Data (Testing purpose)
+            updateGoalChart(50, 50);  // Example data
+
+            // Handle form submission and update data dynamically
+            const form = document.getElementById('financial-goal-form');
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const formData = new FormData(form);
+
+                fetch("{% url 'create_financial_goal' %}", {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    updateGoalChart(data.completed, data.remaining);
+
+                    const insightsContainer = document.querySelector('.insights-cards-container');
+                    insightsContainer.innerHTML = `
+                        <div class="insight-card animate__animated animate__zoomIn">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>${data.suggestions[0]}</p>
+                        </div>`;
+                })
+                .catch(error => console.error('Error:', error));
+            });
+
+            // Tooltip functionality on input fields
+            const inputs = document.querySelectorAll("input, select");
+            const tooltip = document.getElementById('tooltip');
+
+            inputs.forEach(input => {
+                input.addEventListener("focus", function (event) {
+                    const message = input.getAttribute("data-tooltip");
+                    if (message) {
+                        tooltip.innerHTML = message;
+                        tooltip.style.display = "block";
+                        tooltip.style.left = `${event.target.offsetLeft}px`;
+                        tooltip.style.top = `${event.target.offsetTop + 30}px`;
+                    }
+                });
+
+                input.addEventListener("blur", function () {
+                    tooltip.style.display = "none";
+                });
+            });
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: url('https://static.vecteezy.com/system/resources/thumbnails/026/285/515/small/digital-financial-data-illustration-background-line-graphic-line-finance-stock-trading-investment-dark-blue-background-vector.jpg') no-repeat center center fixed; /* Background Image */
+    background-size: cover; /* Ensure the image covers the entire page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    font-size: 16px;
+    overflow-x: hidden;
+    background-size: cover;
+    animation: gradientShift 6s ease infinite; /* Adding smooth background animation */
+    position: relative;
+}
+
+/* Decorative Circle */
+.form-decor {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3498db, #e74c3c);
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* Main Form Container */
+form {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, opacity 0.3s ease;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    opacity: 0;  /* Initially hidden */
+    animation: fadeIn 1.5s forwards, slideUp 0.6s ease-out 0.3s forwards; /* Animation for the form */
+}
+
+form:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Font Color for Form Title */
+form h1 {
+    font-size: 38px;
+    color: #27ae60; /* Green font color */
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: slideIn 1s ease-out, textReveal 3s forwards; /* Adding text reveal animation */
+}
+
+/* Input Fields Styling */
+form label {
+    font-size: 18px;
+    color: #27ae60; /* Green font color */
+    display: block;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: slideInFromLeft 0.5s ease-in-out forwards; /* Animation for label */
+    transition: all 0.3s ease; /* For floating effect */
+}
+
+form label.floated {
+    font-size: 14px;
+    color: #27ae60; /* Green font color when floating */
+    top: -5px;
+}
+
+/* Floating Label Effect */
+form input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px; /* Green border color */
+    border-radius: 10px;
+    font-size: 18px;
+    color: #27ae60; /* Green font color inside inputs */
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: slideInFromLeft 0.5s ease-in-out 0.3s forwards; /* Animation for input */
+    position: relative;
+    z-index: 1;
+}
+
+form input:focus {
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+}
+
+form input:focus + label,
+form input:valid + label {
+    top: -10px;
+    left: 10px;
+    font-size: 14px;
+    color: #2ecc71; /* Darker green when input is focused */
+}
+
+/* Button Styling */
+form button {
+    padding: 15px;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    background-color: #27ae60; /* Green button background */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    animation: pulseButton 1.5s ease-in-out infinite; /* Button pulse effect */
+}
+
+form button:hover {
+    background-color: #2ecc71; /* Lighter green on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Section */
+footer {
+    background-color: rgba(0, 0, 0, 0.144);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.923);
+    font-size: 16px;
+}
+
+footer p {
+    line-height: 1.6;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Keyframe Animations */
+
+/* Text Reveal Animation (For the header) */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Slide in Animation */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Slide Up Animation for the Form */
+@keyframes slideUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Slide In from Left Animation */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Button Pulse Animation */
+@keyframes pulseButton {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Text Hover Effects */
+h1:hover {
+    animation: glitch 1s ease-in-out infinite;
+}
+
+h1.glitch {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 48px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+h1.glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #3498db;
+    background-clip: text;
+    clip-path: inset(0 0 0 0);
+    animation: glitchEffect 0.3s linear infinite;
+}
+
+@keyframes glitchEffect {
+    0% {
+        transform: translate(-5px, -5px);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(5px, 5px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-5px, -5px);
+        opacity: 0.7;
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(-2px, -2px);
+    }
+    50% {
+        transform: translate(2px, 2px);
+    }
+    100% {
+        transform: translate(-2px, -2px);
+    }
+}

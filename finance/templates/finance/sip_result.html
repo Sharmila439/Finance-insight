@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIP Calculator Result</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'finance/sip-res.css' %}">
+</head>
+<body>
+    <!-- Result Container -->
+    <div class="result-container">
+        <h1>Your SIP Maturity Amount is: {{ maturity_amount }}</h1>
+        <a href="{% url 'sip_calculator' %}">Go Back</a>
+    </div>
+</body>
+</html>
