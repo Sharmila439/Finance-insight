@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from django.http import HttpResponseBadRequest
-from .models import SIP,Loan,Lesson,UserProfile,User, FinancialGoal
-from .forms import SIPForm, LoanForm,LessonForm,UserProfileForm, FinancialGoalForm
+from .models import SIP,Lesson,UserProfile,ContactMessage
+from .forms import SIPForm, LoanForm,LessonForm,UserProfileForm, FinancialGoalForm,LoginForm,RegisterForm,ContactForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
@@ -11,6 +11,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from datetime import date
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 
 def home(request):
     return render(request, 'finance/home.html')
@@ -111,7 +112,7 @@ def register(request):
         if profile_form.is_valid():
             profile_form.save()  # Save the profile data
             messages.success(request, 'Your profile has been updated successfully!')
-            return redirect('profile')  # Redirect back to the profile page
+            return redirect('user-profile')  # Redirect back to the profile page
         else:
             messages.error(request, 'Please correct the errors in the form.')
     else:
@@ -189,3 +190,74 @@ def create_financial_goal(request):
         'completed': completed,
         'remaining': remaining
     })
+
+def login_view(request):
+    form = LoginForm()
+    
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data["username"].strip()
+            password = form.cleaned_data["password"].strip()
+
+            # Validate if fields are empty after stripping spaces
+            if not username or not password:
+                messages.error(request, "Username and Password are required!")
+                return render(request, "accounts/login.html", {"form": form})
+
+            user = authenticate(request, username=username, password=password)
+
+            if user:
+                login(request, user)
+                messages.success(request, "Login successful! 🎉")
+                return redirect("home")  # Redirect to home after login
+            else:
+                messages.error(request, "Invalid username or password!")
+
+    return render(request, "accounts/login.html", {"form": form})
+
+def register_view(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            email = form.cleaned_data["email"]
+            password = form.cleaned_data["password"]
+
+            # Check if username already exists
+            if User.objects.filter(username=username).exists():
+                messages.error(request, "Username is already taken.")
+                return render(request, "accounts/login-reg.html", {"form": form})
+
+            # Check if email already exists
+            if User.objects.filter(email=email).exists():
+                messages.error(request, "Email is already registered.")
+                return render(request, "accounts/login-reg.html", {"form": form})
+
+            # Create user and store in database
+            user = User.objects.create_user(username=username, email=email, password=password)
+            messages.success(request, "Registration successful! You can now log in.")
+            return redirect("login")
+
+        else:
+            messages.error(request, "Please correct the errors below.")
+
+    else:
+        form = RegisterForm()
+
+    return render(request, "accounts/login-reg.html", {"form": form})
+
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect("contact")
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:
+        form = ContactForm()
+
+    return render(request, "accounts/contact.html", {"form": form})

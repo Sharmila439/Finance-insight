@@ -1,4 +1,6 @@
 <!-- homepage/templates/homepage/home.html -->
+{% extends 'finance/header.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,22 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>Financial Insights</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href=" "><i class="fas fa-home"></i> Home</a></li> <!-- Home Icon -->
-                <li><a href="emi-calculator/"><i class="fas fa-calculator"></i> EMI Calculator</a></li> <!-- EMI Calculator Icon -->
-                <li><a href="sip-calculator"><i class="fas fa-hand-holding-usd"></i> SIP Calculator</a></li> <!-- SIP Calculator Icon -->
-                <li><a href="fin-edu/"><i class="fas fa-graduation-cap"></i> Financial Education</a></li> <!-- Financial Education Icon -->
-                <li><a href="ai-insights/"><i class="fas fa-robot"></i> AI Insights</a></li> <!-- AI Insights Icon -->
-                <li><a href="user-profile/" class="user-profile"><i class="fas fa-user-circle"></i> Profile</a></li> <!-- User Profile Icon -->
-            </ul>
-        </nav>
-    </header>
-
     <section class="hero">
         <div class="hero-content">
             <h2>Your Financial Future Starts Here</h2>
@@ -39,17 +25,17 @@
             <div class="card">
                 <h3>Investment Planning</h3>
                 <p>Smart investment strategies to grow your wealth.</p>
-                <a href="#" class="card-btn">Learn More</a>
+                <a href="https://stackwealth.in/blog/finance/what-is-investment-planning" class="card-btn">Learn More</a>
             </div>
             <div class="card">
                 <h3>Tax Planning</h3>
                 <p>Maximize your returns with effective tax-saving strategies.</p>
-                <a href="#" class="card-btn">Learn More</a>
+                <a href="https://www.investopedia.com/terms/t/tax-planning.asp#:~:text=Tax%20planning%20is%20the%20analysis,an%20individual%20investor's%20financial%20plan." class="card-btn">Learn More</a>
             </div>
             <div class="card">
                 <h3>Retirement Planning</h3>
                 <p>Secure your future with a solid retirement plan.</p>
-                <a href="#" class="card-btn">Learn More</a>
+                <a href="https://www.hdfclife.com/retirement-and-pension-plans/retirement-planning" class="card-btn">Learn More</a>
             </div>
         </div>
 
@@ -84,3 +70,4 @@
     </footer>
 </body>
 </html>
+{%endblock%}

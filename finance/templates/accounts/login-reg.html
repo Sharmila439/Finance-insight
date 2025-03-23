@@ -1,0 +1,36 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'finance/login.css' %}">
+<div class="container">
+    <div class="form-box">
+        <h2>Create Your Account</h2>
+        <p>Register to access Financial Insight</p>
+
+        <form method="POST" action="{% url 'login-reg' %}">
+            {% csrf_token %}
+
+            <div class="input-container">
+                <input type="text" name="username" id="username" required>
+                <label for="username">Username</label>
+            </div>
+
+            <div class="input-container">
+                <input type="email" name="email" id="email" required>
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-container">
+                <input type="password" name="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+
+            <div class="input-container">
+                <input type="password" name="confirm_password" id="confirm_password" required>
+                <label for="confirm_password">Confirm Password</label>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+        </form>
+
+        <p>Already have an account? <a href="{% url 'login' %}" class="link">Login here</a></p>
+    </div>
+</div>

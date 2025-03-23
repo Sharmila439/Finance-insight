@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
       path('admin/', admin.site.urls),
-      path('finance/',include("finance.urls")),
+      path('',include("finance.urls")),
 ]
 
 

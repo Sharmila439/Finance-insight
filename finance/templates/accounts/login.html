@@ -3,17 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{% static 'accounts/styles.css' %}">
+    <title>Financial Insight - Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'finance/login.css' %}">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Login</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Login</button>
-        </form>
+    <div class="container">
+        <div class="form-box">
+            <h2>Welcome to Financial Insight </h2>
+            <p>Login to access your financial home page</p>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                
+                <div class="input-container">
+                    <input type="text" name="username" id="username" required>
+                    <label for="username">Username</label>
+                    <span class="icon">👤</span>
+                </div>
+
+                <div class="input-container">
+                    <input type="password" name="password" id="password" required>
+                    <label for="password">Password</label>
+                    <span class="icon">🔒</span>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p>Don't have an account? <a href="{% url 'login-reg' %}" class="link">Register here</a></p>
+        </div>
     </div>
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 </body>
 </html>

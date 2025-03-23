@@ -1,3 +1,5 @@
+{% extends 'finance/header.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +12,11 @@
 <body>
     <div class="profile-container">
         <!-- Header Section -->
-        <header class="profile-header">
-            <h1>Welcome, {{ user.username }}!</h1>
-        </header>
+        <center>
+        <head class="profile-header">
+            <h1 class="name">Welcome, {{ user.username }}!</h1>
+        </head>
+        </center>
 
         <!-- Main Profile Section -->
         <main class="profile-main">
@@ -70,3 +74,4 @@
     </footer>
 </body>
 </html>
+{%endblock%}

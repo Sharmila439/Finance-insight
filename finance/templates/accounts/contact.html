@@ -1,0 +1,42 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'finance/contact.css' %}">
+<div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>We would love to hear from you! Fill in the form below.</p>
+
+    <form method="POST" action="{% url 'contact' %}">
+        {% csrf_token %}
+
+        <div class="input-container">
+            <input type="text" name="name" id="name" required>
+            <label for="name">Full Name</label>
+        </div>
+
+        <div class="input-container">
+            <input type="email" name="email" id="email" required>
+            <label for="email">Email Address</label>
+        </div>
+
+        <div class="input-container">
+            <input type="text" name="subject" id="subject" required>
+            <label for="subject">Subject</label>
+        </div>
+
+        <div class="input-container">
+            <textarea name="message" id="message" rows="4" required></textarea>
+            <label for="message">Your Message</label>
+        </div>
+
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

@@ -1,5 +1,5 @@
 from django import forms
-from .models import SIP, Loan,Lesson,UserProfile, User, FinancialGoal
+from .models import SIP, Loan,Lesson,UserProfile, User, FinancialGoal, ContactMessage
 from django.contrib.auth.models import User
 
 class SIPForm(forms.ModelForm):
@@ -29,10 +29,39 @@ class UserProfileForm(forms.ModelForm):
             'date_of_birth': forms.DateInput(attrs={'type': 'date'})
         }
 
-
-
 class FinancialGoalForm(forms.ModelForm):
     class Meta:
         model = FinancialGoal
         fields = ['name','email','date_of_birth','amount','goal_name', 'goal_type', 'target_amount', 'target_date', 'risk_appetite']
-        
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=150, widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+
+class RegisterForm(forms.ModelForm):
+    confirm_password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ["username", "email", "password"]
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        confirm_password = cleaned_data.get("confirm_password")
+
+        if password and confirm_password and password != confirm_password:
+            self.add_error("confirm_password", "Passwords do not match.")
+
+        return cleaned_data
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ['name', 'email', 'message']
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if not email.endswith("@gmail.com"):  # Example validation
+            raise forms.ValidationError("Only Gmail addresses are allowed.")
+        return email
