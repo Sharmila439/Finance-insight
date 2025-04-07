@@ -21,4 +21,4 @@ Follow these steps to get the project up and running:
 
 ## Execution Instructions
 
-1.python manage.py runserver
+1. **python manage.py runserver**
