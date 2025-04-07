@@ -19,6 +19,6 @@ Follow these steps to get the project up and running:
 
 1. **Clone the repository:**
 
-##Execution Instructions
+## Execution Instructions
 
 1.python manage.py runserver
